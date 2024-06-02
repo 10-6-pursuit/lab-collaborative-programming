@@ -34,7 +34,16 @@ function textScroller( string ) {
  * @param {Number[]} numbers - An array of numbers.
  * @returns {Number} The difference between the largest and smallest number.
  */
-function betweenExtremes() {}
+function betweenExtremes( array ) {
+  let smallest = Math.min(...array);
+  let largest = Math.max(...array);
+
+  return array.every( num => !isNaN(num) ) ? largest - smallest : array;
+}
+
+console.log(betweenExtremes([1,3, "f"]))
+console.log(betweenExtremes([1, 3, 4]))
+
 
 /**
  * Returns the message translated into morse code
