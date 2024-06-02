@@ -5,7 +5,7 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @param {String[]}  - An array of strings.
  * @returns {string[]} An array of strings.
  */
-function sortByStringLength() {}
+const sortByStringLength = (arr) => arr.sort((a, b) => a.length - b.length);
 
 /**
  * Returns an array of the word in all scrolling positions.
@@ -14,14 +14,28 @@ function sortByStringLength() {}
  * Example: "Hello"
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
-function textScroller() {}
+function textScroller(str) {
+  if (!str) return [];
+
+  const result = [];
+  for (let i = 1; i <= str.length; i++)
+    result.push(str.slice(i) + str.slice(0, i));
+
+  return result;
+}
 
 /**
  * Returns the difference between the largest and smallest number in the array
  * @param {Number[]} numbers - An array of numbers.
  * @returns {Number} The difference between the largest and smallest number.
  */
-function betweenExtremes() {}
+function betweenExtremes(numbers) {
+  if(!numbers.every(num => typeof num === 'number')) return numbers;
+
+  const max = Math.max(...numbers);
+  const min = Math.min(...numbers);
+  return max - min;
+}
 
 /**
  * Returns the message translated into morse code
@@ -31,7 +45,17 @@ function betweenExtremes() {}
  * Example: "A new month"
  * .- / -. . .-- / -- --- -. - ....
  */
-function morseCodeTranslator() {}
+function morseCodeTranslator(str) {
+  const result = [];
+
+  str = str.toUpperCase();
+
+  for (char of str) {
+    morseCodeDictionary[char] ? result.push(morseCodeDictionary[char]) : null;
+  }
+
+  return result.join(" ");
+}
 
 module.exports = {
   sortByStringLength,
