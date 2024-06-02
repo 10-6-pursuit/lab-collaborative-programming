@@ -16,8 +16,17 @@ function sortByStringLength( array ) {
  * Example: "Hello"
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
+
 function textScroller( string ) {
-  
+  let arr = [];
+  if( !string.length ) {
+    return arr;
+  } else {
+    for (let i = 1; i <= string.length; i++) {
+      arr.push( string.slice(i).concat(string.slice(0, i)) )
+    }
+  }
+  return arr;
 }
 
 /**
