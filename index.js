@@ -5,7 +5,7 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @param {String[]}  - An array of strings.
  * @returns {string[]} An array of strings.
  */
-function sortByStringLength() {}
+const sortByStringLength = (arr) => arr.sort((a, b) => a.length - b.length);
 
 /**
  * Returns an array of the word in all scrolling positions.
@@ -29,7 +29,13 @@ function textScroller(str) {
  * @param {Number[]} numbers - An array of numbers.
  * @returns {Number} The difference between the largest and smallest number.
  */
-function betweenExtremes() {}
+function betweenExtremes(numbers) {
+  if(!numbers.every(num => typeof num === 'number')) return numbers;
+
+  const max = Math.max(...numbers);
+  const min = Math.min(...numbers);
+  return max - min;
+}
 
 /**
  * Returns the message translated into morse code
