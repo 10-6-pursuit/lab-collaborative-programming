@@ -41,10 +41,6 @@ function betweenExtremes( array ) {
   return array.every( num => !isNaN(num) ) ? largest - smallest : array;
 }
 
-console.log(betweenExtremes([1,3, "f"]))
-console.log(betweenExtremes([1, 3, 4]))
-
-
 /**
  * Returns the message translated into morse code
  * @param {String} message - A string to translate.
@@ -53,7 +49,14 @@ console.log(betweenExtremes([1, 3, 4]))
  * Example: "A new month"
  * .- / -. . .-- / -- --- -. - ....
  */
-function morseCodeTranslator() {}
+
+function morseCodeTranslator( alphaString, morseCodeDictionary) {
+  return alphaString.split(" ")
+  .map( word => word.split("")
+  .map( char => morseCodeDictionary[char.toUpperCase()] )
+  .join(" "))
+  .join(" ")
+}
 
 module.exports = {
   sortByStringLength,
