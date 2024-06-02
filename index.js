@@ -14,7 +14,15 @@ function sortByStringLength() {}
  * Example: "Hello"
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
-function textScroller() {}
+function textScroller(str) {
+  if (!str) return [];
+
+  const result = [];
+  for (let i = 1; i <= str.length; i++)
+    result.push(str.slice(i) + str.slice(0, i));
+
+  return result;
+}
 
 /**
  * Returns the difference between the largest and smallest number in the array
@@ -31,7 +39,17 @@ function betweenExtremes() {}
  * Example: "A new month"
  * .- / -. . .-- / -- --- -. - ....
  */
-function morseCodeTranslator() {}
+function morseCodeTranslator(str) {
+  const result = [];
+
+  str = str.toUpperCase();
+
+  for (char of str) {
+    morseCodeDictionary[char] ? result.push(morseCodeDictionary[char]) : null;
+  }
+
+  return result.join(" ");
+}
 
 module.exports = {
   sortByStringLength,
