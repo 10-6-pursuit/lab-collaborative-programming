@@ -13,13 +13,6 @@ function sortByStringLength(arr) {
 
   let newArr = arr.sort((a,b) => a.length - b.length);
   
-
-  // for(let i = 0; i < arr.length; i++) {
-  //   if(arr[i].length < arr[i+1].length) {
-  //     newArr.push(arr[i]);
-  //   }
-  // }
-
    return newArr;
 }
 
@@ -41,7 +34,6 @@ function textScroller(str) {
   return arr;
 }
 
-// console.log(textScroller("Hello"));
 
 /**
  * Returns the difference between the largest and smallest number in the array
@@ -80,7 +72,6 @@ function morseCodeTranslator(message, morseCodeDictionary) {
   return str.join(" ");
 }
 
-// console.log(morseCodeTranslator("A new month", morseCodeDictionary));
 
 module.exports = {
   sortByStringLength,
