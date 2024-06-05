@@ -5,7 +5,16 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @param {String[]}  - An array of strings.
  * @returns {string[]} An array of strings.
  */
-function sortByStringLength() {}
+function sortByStringLength(arr) {
+
+  if(arr.filter(x=>typeof x !== 'string').length>=1){
+
+    return arr;
+}
+  let newArr = arr.sort((a, b) => (a.length-b.length));
+return newArr;
+}
+
 
 /**
  * Returns an array of the word in all scrolling positions.
@@ -14,14 +23,36 @@ function sortByStringLength() {}
  * Example: "Hello"
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
-function textScroller() {}
+function textScroller(str) {
+  let arr= [];
 
+  for(let i = 0; i<str.length; i++){
+    arr.push(str.slice(i+1)+str.slice(0,i+1));
+  }
+  return arr;
+}
+console.log(textScroller('hello'));
 /**
  * Returns the difference between the largest and smallest number in the array
  * @param {Number[]} numbers - An array of numbers.
  * @returns {Number} The difference between the largest and smallest number.
  */
-function betweenExtremes() {}
+function betweenExtremes(numbers) {
+
+  if(numbers.some(x => typeof x !== "number")){
+
+    return numbers;
+
+  }
+
+  let newArr=numbers.sort((a,b)=>b-a);
+
+  
+
+  return newArr[0]-newArr[newArr.length-1];
+
+
+}
 
 /**
  * Returns the message translated into morse code
@@ -31,7 +62,19 @@ function betweenExtremes() {}
  * Example: "A new month"
  * .- / -. . .-- / -- --- -. - ....
  */
-function morseCodeTranslator() {}
+function morseCodeTranslator(message, morseCodeDictionary) {
+  let newStr = message.toUpperCase();
+  let str = [];
+
+  for(let i = 0; i < newStr.length; i++) {
+    if(morseCodeDictionary[newStr[i]]){
+      str.push(morseCodeDictionary[newStr[i]])
+    } else {
+      continue;
+    }
+  }
+  return str.join(" ");
+}
 
 module.exports = {
   sortByStringLength,
